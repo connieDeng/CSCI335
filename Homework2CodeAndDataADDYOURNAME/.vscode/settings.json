@@ -1,0 +1,7 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "xiosbase": "cpp",
+        "xlocale": "cpp"
+    }
+}

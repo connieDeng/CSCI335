@@ -1,0 +1,13 @@
+#Note that it is possible to deviate a little bit from these numbers.
+Input files are rebase210.txt and sequences.txt
+Type of tree is AVL
+2: 565
+3a: 7.37522
+3b: 0.806731
+4a: 420
+4b: 8.04048
+5a: 161
+5b: 9.11905
+6a: 404
+6b: 7.02228
+6c: 0.811054
