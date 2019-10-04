@@ -18,6 +18,13 @@ public:
     SequenceMap& operator= (const SequenceMap & rhs) = default;
     SequenceMap& operator= (SequenceMap && rhs) = default;
 
+    
+    /*//constructor given string and vector
+    SequenceMap(const std::string &a_rec_seq, vector<string> an_enz_acro){
+        recognition_sequence_ = a_rec_seq;
+        enzyme_acronyms_ = an_enz_acro; 
+    }*/
+
     //constructor given 2 strings parameters
     SequenceMap(const std::string &a_rec_seq, const std::string &an_enz_acro){
         recognition_sequence_ = a_rec_seq;
@@ -51,8 +58,6 @@ public:
 /*---------------private members--------------------*/
 private:
     string recognition_sequence_;
-    vector<string> enzyme_acronyms_; //contains one element
+    vector<string> enzyme_acronyms_;
 
 }; //end of class
-
-//#endif SequenceMap.h
