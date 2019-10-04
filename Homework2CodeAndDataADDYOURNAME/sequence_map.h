@@ -12,19 +12,11 @@ class SequenceMap
 public:
 
     // The Big Five:
-    ~SequenceMap() = default;
-    SequenceMap(const SequenceMap & rhs) = default;
-    SequenceMap(SequenceMap && rhs) = default;
-    SequenceMap& operator= (const SequenceMap & rhs) = default;
-    SequenceMap& operator= (SequenceMap && rhs) = default;
-
-    
-    /*//constructor given string and vector
-    SequenceMap(const std::string &a_rec_seq, vector<string> an_enz_acro){
-        recognition_sequence_ = a_rec_seq;
-        enzyme_acronyms_ = an_enz_acro; 
-    }*/
-
+    ~SequenceMap() = default; //destructor
+    SequenceMap(const SequenceMap & rhs) = default; //1 arg constructor
+    SequenceMap(SequenceMap && rhs) = default; //copy constructor
+    SequenceMap& operator= (const SequenceMap & rhs) = default; //copy assignment
+    SequenceMap& operator= (SequenceMap && rhs) = default; //move constructor
     //constructor given 2 strings parameters
     SequenceMap(const std::string &a_rec_seq, const std::string &an_enz_acro){
         recognition_sequence_ = a_rec_seq;
@@ -41,11 +33,11 @@ public:
 
     //printing sequence map
     friend std::ostream& operator<<(std::ostream& os, const SequenceMap& s_map){
-        os << s_map.recognition_sequence_ << " ";
-        for(int i = 0; i < s_map.recognition_sequence_.size(); i++){
+        os << s_map.recognition_sequence_ << ": ";
+        for(int i = 0; i < s_map.enzyme_acronyms_.size(); i++){
             os << s_map.enzyme_acronyms_[i] << " ";
-            os << std::endl;
         }
+        os << std::endl;
         return os;
     }
 

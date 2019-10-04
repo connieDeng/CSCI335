@@ -1,0 +1,33 @@
+  vector<string> enzymeID;
+    
+    while (std::getline(inStream, db_line, '/'))
+    {
+      if (db_line.empty()){
+        //if(enzymeID[0] == NULL) { break; }
+        an_enz_acro = enzymeID[0]; //works
+        //cout << an_enz_acro << " ";
+        cout << enzymeID.size() << " ";
+        enzymeID.erase( enzymeID.begin() ); //delete enzyme_acronym
+        cout << enzymeID.size() << endl;
+        
+        if(enzymeID.size() == 0)
+          break;
+
+        else{
+          for(int i = 0; i < enzymeID.size(); i++){
+          //cout << i << " ";
+          //cout << enzymeID[i] << " " << endl; //works
+          SequenceMap new_sequence_map(enzymeID[i], an_enz_acro);
+          a_tree.insert(new_sequence_map);
+          }
+        }
+        //cout << endl;
+        enzymeID.clear();
+        //cout << "cleared";
+        continue;
+      }
+    
+      else
+        //std::cout << db_line; //reads correctly
+        enzymeID.push_back(db_line);
+    }

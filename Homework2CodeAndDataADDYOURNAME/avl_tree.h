@@ -14,6 +14,7 @@ using namespace std;
 // void insert( x )       --> Insert x
 // void remove( x )       --> Remove x (unimplemented)
 // bool contains( x )     --> Return true if x is present
+//// Comparable find(x)    --> Find and return a node
 // Comparable findMin( )  --> Return smallest item
 // Comparable findMax( )  --> Return largest item
 // boolean isEmpty( )     --> Return true if empty; else false
@@ -64,6 +65,22 @@ class AvlTree
         return *this;
     }
     
+    const Comparable& find(const Comparable& x)const
+    {
+        if( isEmpty( ) )
+            throw UnderflowException{ };
+        return find(x,root);
+    }
+
+    const Comparable& find(const string& x) const
+    {
+        if( isEmpty( ) )
+            throw UnderflowException{ };
+        Comparable temp{x};
+        return find(temp,root);
+    }    
+
+
     /**
      * Find the smallest item in the tree.
      * Throw UnderflowException if empty.
@@ -178,7 +195,9 @@ class AvlTree
             insert( x, t->left );
         else if( t->element < x )
             insert( x, t->right );
-        
+         else
+            t->element.Merge(x);
+            
         balance( t );
     }
 
@@ -196,6 +215,8 @@ class AvlTree
             insert( std::move( x ), t->left );
         else if( t->element < x )
             insert( std::move( x ), t->right );
+        else
+            t->element.Merge(x);
         
         balance( t );
     }
@@ -275,6 +296,30 @@ class AvlTree
             while( t->right != nullptr )
                 t = t->right;
         return t;
+    }
+    
+    /**
+     * find node and return it
+     */
+    AvlNode * find(const Comparable& x, AvlNode* t) const
+    {
+         if(t == nullptr)
+            {
+                cout << "Not Found." <<endl;
+                return x;
+            }  
+            else if (x < t->element)
+            {
+                return find(x,t->left);
+            }
+            else if (t->element < x)
+            {
+                return find(x,t->right);
+            }
+            else
+            {
+                return t->element;    // Match        
+            }
     }
 
 
