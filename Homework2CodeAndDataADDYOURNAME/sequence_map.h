@@ -17,6 +17,14 @@ public:
     SequenceMap(SequenceMap && rhs) = default; //copy constructor
     SequenceMap& operator= (const SequenceMap & rhs) = default; //copy assignment
     SequenceMap& operator= (SequenceMap && rhs) = default; //move constructor
+    
+    // One Argument constructor
+    SequenceMap(const string& a_rec_seq){
+        recognition_sequence_ = a_rec_seq; 
+        //vector initiation
+        enzyme_acronyms_ = {}; 
+    }
+
     //constructor given 2 strings parameters
     SequenceMap(const std::string &a_rec_seq, const std::string &an_enz_acro){
         recognition_sequence_ = a_rec_seq;
@@ -33,11 +41,12 @@ public:
 
     //printing sequence map
     friend std::ostream& operator<<(std::ostream& os, const SequenceMap& s_map){
-        os << s_map.recognition_sequence_ << ": ";
-        for(int i = 0; i < s_map.enzyme_acronyms_.size(); i++){
-            os << s_map.enzyme_acronyms_[i] << " ";
-        }
-        os << std::endl;
+        string seqMap;
+        for (const string& acro : s_map.enzyme_acronyms_)
+        {
+            seqMap += acro + " ";
+        }  
+        cout << seqMap;
         return os;
     }
 

@@ -78,7 +78,7 @@ int main(int argc, char **argv)
   const string db_filename(argv[1]);
   cout << "Input filename is " << db_filename << endl;
   //Note that you will replace AvlTree<int> with AvlTree<SequenceMap>
-  //AvlTree<int> a_tree;
+  //AvlTree<int> b_tree;
   AvlTree<SequenceMap> a_tree;
   QueryTree(db_filename, a_tree);
 
@@ -86,17 +86,20 @@ int main(int argc, char **argv)
   string input1, input2, input3;
   cout << "enter THREE recognition sequences): ";
   cin >> input1 >> input2 >> input3;
+  cout << endl;
   //vector of inputs
   userInputs.push_back(input1); userInputs.push_back(input2); userInputs.push_back(input3);
   
   for (int i = 0; i < 3; i++){
-      if(a_tree.contains(userInputs[i])){}
-      /*  //a_tree.find(userInputs[i]).PrintEnzSequence(); // Print Sequence
+      string i_enz_acro;
+      SequenceMap input_sequence_map(userInputs[i]);
       
-      else
-        cout << "Not Found" << endl;*/
-
-      cout << userInputs[i] + " "; 
+      if(a_tree.contains(input_sequence_map)){ 
+          cout << a_tree.find(userInputs[i]) << " ";
+          //cout << endl; 
+      }
+      
+      else{ cout << "Not Found" << endl; }
       }
   return 0;
 }
